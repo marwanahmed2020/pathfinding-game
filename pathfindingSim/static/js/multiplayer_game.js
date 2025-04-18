@@ -65,7 +65,7 @@ class MultiplayerGame {
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         const wsUrl = `${protocol}//${window.location.host}/ws/game/`;
         
-        this.socket = new WebSocket(wsUrl);
+        this.socket = new WebSocket('wss://pathfinding-game.onrender.com/game/');
         
         this.socket.onopen = () => {
             console.log("WebSocket connection established");
