@@ -1,1 +1,1 @@
-web: gunicorn pathfindingSim.wsgi
+web: daphne pathfindingSim.asgi:application
