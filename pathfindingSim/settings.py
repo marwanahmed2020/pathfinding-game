@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-_79dkrpq^zz!bhb9-9v!edf!vuc7^a^tp^g(up_w5)8bpw*=ta
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['pathfinding-game.onrender.com', '127.0.0.1', 'localhost']
+
 
 
 # Application definition
