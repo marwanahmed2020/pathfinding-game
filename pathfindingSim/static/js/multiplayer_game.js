@@ -62,26 +62,35 @@ class MultiplayerGame {
     
     initializeWebSocket() {
         console.log("Initializing WebSocket connection...");
+        
+        // Dynamically determine the WebSocket protocol based on the page protocol (https -> wss, http -> ws)
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        
+        // Dynamically construct the WebSocket URL using the host from the current page
         const wsUrl = `${protocol}//${window.location.host}/ws/game/`;
         
-        this.socket = new WebSocket('wss://pathfinding-game.onrender.com/game/');
+        console.log("Attempting WebSocket connection to:", wsUrl);  // Debugging line
         
+        // Use the dynamically generated URL for the WebSocket connection
+        this.socket = new WebSocket(wsUrl);
+    
+        // Handle the WebSocket connection events
         this.socket.onopen = () => {
             console.log("WebSocket connection established");
             this.updateStatus("Connected to server");
         };
-        
+    
         this.socket.onclose = () => {
             console.log("WebSocket connection closed");
             this.updateStatus("Disconnected from server");
         };
-        
+    
         this.socket.onmessage = (event) => {
             console.log("WebSocket message received:", event.data);
             this.handleWebSocketMessage(event.data);
         };
     }
+    
     
     initializeUI() {
         console.log("Initializing UI elements...");
